@@ -9,6 +9,8 @@ import zipzong.zipzong.controller.MemberController;
 import zipzong.zipzong.dto.member.MemberResponse;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED) //기본 생성자 만들어줌
 @DynamicUpdate //update 할때 실제 값이 변경됨 컬럼으로만 update 쿼리를 만듬
@@ -33,9 +35,11 @@ public class Member {
     @Column(name = "nickname", nullable = true, unique = true)
     private String nickname;
 
-
-    @Column(name = "refreshToken", unique = true)
+    @Column(name = "refresh_token", unique = true)
     private String refreshToken;
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<MemberIcon> memberIcons = new ArrayList<>();
 
     @Builder //생성을 Builder 패턴으로 하기 위해서
     public Member(Long id, String name, String email, String provider, String nickname) {
@@ -65,4 +69,8 @@ public class Member {
         return memberResponse;
     }
 
+    public void addMemberIcon(MemberIcon memberIcon) {
+        memberIcons.add(memberIcon);
+        memberIcon.setMember(this);
+    }
 }
