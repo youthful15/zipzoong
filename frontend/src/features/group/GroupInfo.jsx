@@ -8,12 +8,14 @@ import Modal from "../../components/modal/Modal"
 import SmallTextInput from "../../components/input/SmallTextInput"
 import Select from "../../components/input/Select"
 import Radio from "../../components/input/Radio"
+import { useDispatch, useSelector } from "react-redux"
 
 function GroupManagement() {
   const navigate = useNavigate()
   const [isLeader, setIsLeader] = useState(false)
   const [isOpen, setOpen] = useState(false)
   const modalClose = () => setOpen(false)
+
   return (
     <div className="w-full ml-10">
       {/* 모달 영역 */}
@@ -106,12 +108,21 @@ function GroupManagement() {
   )
 }
 
-export default function GroupInfo({
-  groupname,
-  groupleader,
-  groupPeopleNumber,
-  groupExplanation,
-}) {
+export default function GroupInfo() {
+  const group = useSelector((state) => state.group)
+  const {
+    teamName: groupname,
+    teamLeader: groupleaderInfo,
+    teamMembers: groupPeopleNumber,
+    teamContent: groupExplanation,
+  } = group
+  console.log(group)
+  const groupleader = groupleaderInfo.name
+  console.log("그룹이름", groupname)
+  console.log("팀장", groupleader)
+  console.log("사람", groupPeopleNumber)
+  console.log("설명", groupExplanation)
+
   return (
     <div className="w-full flex mt-5">
       <Card size="100%">
@@ -128,10 +139,10 @@ export default function GroupInfo({
             </p>
 
             <div className="flex" style={{ fontSize: "11px" }}>
-              <p>그룹장: {groupleader}</p>
+              {/* <p>그룹장: {groupleader}</p> */}
               <p className="flex">
                 <UserIcon />
-                {groupPeopleNumber} / 10
+                {groupPeopleNumber.length} / 10
               </p>
             </div>
           </div>

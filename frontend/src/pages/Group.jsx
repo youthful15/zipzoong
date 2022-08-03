@@ -12,28 +12,22 @@ export default function Group() {
   const dispatch = useDispatch()
   const location = useLocation()
   const fetchTeamId = location.pathname.split("/")[2]
-  const teamName = useSelector((state) => state.group.teamName)
-  const teamMembers = useSelector((state) => state.group.teamMembers)
-  const teamContent = useSelector((state) => state.group.teamContent)
-  const teamLeader = useSelector((state) => state.group.teamLeader)
-  console.log(teamLeader)
+  // const teamName = useSelector((state) => state.group.teamName)
+  // const teamMembers = useSelector((state) => state.group.teamMembers)
+  // const teamContent = useSelector((state) => state.group.teamContent)
+  // const teamLeader = useSelector((state) => state.group.teamLeader)
   const teamId = 1
-  console.log("그룹페이지", teamName)
+  // console.log("그룹페이지", teamName, fetchTeamId)
 
   useEffect(() => {
     dispatch(teamInfo(fetchTeamId))
-  }, [dispatch])
+  }, [])
   return (
     <div className="w-[60%] mx-auto">
       <div className="flex">
-        <GroupInfo
-          groupname={teamName}
-          groupleader={teamLeader.nickname}
-          groupPeopleNumber={teamMembers.length}
-          groupExplanation={teamContent}
-        />
-      </div>
-      <div className="flex justify-center flex-col items-center mt-20">
+        <GroupInfo />
+        {/* </div> */}
+        {/* <div className="flex justify-center flex-col items-center mt-20">
         <div className="text-center">
           <p className="text-lg">멤버 리스트</p>
           <Line />
@@ -54,7 +48,7 @@ export default function Group() {
           <p className="text-lg">그룹 운동 정보</p>
           <Line />
         </div>
-        <GroupExerciseInfo />
+        <GroupExerciseInfo /> */}
       </div>
     </div>
   )

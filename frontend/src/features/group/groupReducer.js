@@ -42,6 +42,7 @@ export const groupSlice = createSlice({
   },
   extraReducers(builder) {
     builder.addCase(teamInfo.fulfilled, (state, action) => {
+      console.log("RESPONSE", action.payload)
       state.icons = action.payload.data.data.icons
       state.teamName = action.payload.data.data.name
       state.teamContent = action.payload.data.data.content
