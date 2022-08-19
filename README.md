@@ -121,3 +121,7 @@
 ---
 ## 서비스 아키텍처
 ![image](/uploads/69fb89a28aca35799ab1487326d80bc7/image.png)
+---
+## 기획 문서
+[notion](https://www.notion.so/fe19a266524b482ca36d792627453c9b)
+
