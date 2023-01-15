@@ -2,7 +2,6 @@
 ![image](/uploads/856f57e0dbaa8cca78e628b57610d4e9/image.png)
 집에서도 친구들과 운동이 가능한 WebRTC 플랫폼
 ---
-## 서비스 URL : https://i7a805.p.ssafy.io/
 ## 프로젝트 아이디어
 ### 💪주제
 운동 의지가 약한 사람들을 위해 그룹을 통해 다양한 참여 유도 정책을 제공하는 프로젝트
